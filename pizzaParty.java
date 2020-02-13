@@ -12,14 +12,20 @@ public class pizzaParty {
 		int totalNumberOfSlices = (partyPeople*slices);
 		return totalNumberOfSlices;
 	}
-	public static double costOfPizza(int totalNumberOfPizza, double customerPizzaCost ) {
-		double cost = totalNumberOfPizza*customerPizzaCost;
-		return cost;
+	public static double costOfCustomer(int totalNumberOfPizza, double customerPizzaCost ) {
+		double costToCustomer = totalNumberOfPizza*customerPizzaCost;
+		return costToCustomer;
 	}
-	public static void printData(int totalNumberOfPizza, int totalNumberOfSlices,double cost) {
+	public static double costOfCaterer(int totalNumberOfPizza, double catererPizzaCost ) {
+		double costToCaterer = totalNumberOfPizza*catererPizzaCost;
+		return costToCaterer;
+	}
+	public static void printData(int totalNumberOfPizza, int totalNumberOfSlices,double costToCustomer, int perBox, double costToCaterer) {
 		System.out.println("\nTotal number of slices " + totalNumberOfSlices + "(30 people * 4 slices = " + totalNumberOfSlices + ")");
 		System.out.println("Total number of pizzas " + totalNumberOfPizza + "(120 slices/8 slices per pizza = " + totalNumberOfPizza + ")");
-		System.out.println(cost);
+		System.out.println("Number of extra slices left over " + totalNumberOfPizza/perBox);
+		System.out.println("this is the cost of the party " + costToCustomer);
+		System.out.println("this is the cost to the caterer " + costToCaterer);
 	}
 	
 	
@@ -44,11 +50,6 @@ public class pizzaParty {
 		
 		int totalNumberOfPizza =  numberOfPizzas(partyPeople,slices,perBox);
 		int totalNunmberOfSlices = numberOfSlices(partyPeople,slices,perBox);
-		double cost = costOfPizza(totalNumberOfPizza,customerPizzaCost);
-		printData(totalNumberOfPizza,totalNunmberOfSlices,cost);
-		
-		
-		
-		
-	}
-}
+		double costToCustomer = costOfCustomer(totalNumberOfPizza,customerPizzaCost);
+		double costToCaterer = costOfCaterer(totalNumberOfPizza,catererPizzaCost);
+		printData(totalNumberOfPizza,totalNunmberOfSlices,costToCustomer,perBox,costToCaterer);
